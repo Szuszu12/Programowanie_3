@@ -1,0 +1,19 @@
+﻿<Window x:Class="zad4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:zad4"
+        mc:Ignorable="d"
+        Title="Drzewo Binarne" Height="450" Width="800">
+    <Canvas>
+        <Button Content="Rodzic 1" Width="80" Height="40" Canvas.Left="350" Canvas.Top="20"/>
+
+        <Button Content="Dziecko 1" Width="80" Height="40" Canvas.Left="250" Canvas.Top="100"/>
+        <Button Content="Dziecko 2" Width="80" Height="40" Canvas.Left="450" Canvas.Top="100"/>
+        <Button Content="Wnuczka 1" Width="80" Height="40" Canvas.Left="100" Canvas.Top="200"/>
+        <Button Content="Wnuk 1" Width="80" Height="40" Canvas.Left="200" Canvas.Top="200"/>
+        <Button Content="Wnuczka 2" Width="80" Height="40" Canvas.Left="500" Canvas.Top="200"/>
+        <Button Content="Wnuk 2" Width="80" Height="40" Canvas.Left="600" Canvas.Top="200"/>
+    </Canvas>
+</Window>
