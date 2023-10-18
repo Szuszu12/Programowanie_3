@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="Drzewo Binarne" Height="450" Width="800">
     <Canvas>
-        <Button Content="Rodzic 1" Width="80" Height="40" Canvas.Left="350" Canvas.Top="20"/>
+        <Button Content="Generacja 0" Width="80" Height="40" Canvas.Left="350" Canvas.Top="20"/>
 
-        <Button Content="Dziecko 1" Width="80" Height="40" Canvas.Left="250" Canvas.Top="100"/>
-        <Button Content="Dziecko 2" Width="80" Height="40" Canvas.Left="450" Canvas.Top="100"/>
-        <Button Content="Wnuczka 1" Width="80" Height="40" Canvas.Left="100" Canvas.Top="200"/>
-        <Button Content="Wnuk 1" Width="80" Height="40" Canvas.Left="200" Canvas.Top="200"/>
-        <Button Content="Wnuczka 2" Width="80" Height="40" Canvas.Left="500" Canvas.Top="200"/>
-        <Button Content="Wnuk 2" Width="80" Height="40" Canvas.Left="600" Canvas.Top="200"/>
+        <Button Content="Generacja 1.1" Width="80" Height="40" Canvas.Left="250" Canvas.Top="100"/>
+        <Button Content="Generacja 1.2" Width="80" Height="40" Canvas.Left="450" Canvas.Top="100"/>
+        <Button Content="Generacja 2.1" Width="80" Height="40" Canvas.Left="100" Canvas.Top="200"/>
+        <Button Content="Generacja 2.2" Width="80" Height="40" Canvas.Left="200" Canvas.Top="200"/>
+        <Button Content="Generacja 2.3" Width="80" Height="40" Canvas.Left="500" Canvas.Top="200"/>
+        <Button Content="Generacja 2.4" Width="80" Height="40" Canvas.Left="600" Canvas.Top="200"/>
     </Canvas>
 </Window>
