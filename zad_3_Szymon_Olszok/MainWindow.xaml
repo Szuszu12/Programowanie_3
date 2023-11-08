@@ -11,11 +11,11 @@ schemas.microsoft.com/expression/blend/2008"
     <Grid>
         <Grid Name="TopGridP1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="auto" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         </Grid>
