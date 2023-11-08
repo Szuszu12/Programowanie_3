@@ -190,6 +190,16 @@ namespace zad_1_Szymon_Olszok
                     resultTextBox.Clear();
                     break;
 
+                case Key.Clear:
+                case Key.C:
+                    resultTextBox.Clear();
+                    break;
+
+                case Key.OemComma:
+                case Key.P:
+                    resultTextBox.Text += ",";
+                    break;
+
                 case Key.Enter:
                     // Button_Click_Equals(null, null);
                     second = double.Parse(resultTextBox.Text);
