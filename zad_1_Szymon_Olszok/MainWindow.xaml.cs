@@ -20,107 +20,219 @@ namespace zad_1_Szymon_Olszok
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string currentInput = string.Empty;
-        private double currentNumber = 0;
-        private string currentOperator = string.Empty;
-        private bool isNewInput = true;
+        double first;
+        double second;
+        char op;
 
         public MainWindow()
         {
             InitializeComponent();
+            this.PreviewKeyDown += MainWindow_PreviewKeyDown;
         }
 
-        private void Number_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
-            string digit = button.Content.ToString();
+            Button btn = (Button)sender;
+            resultTextBox.Text += btn.Content.ToString();
+            second = double.Parse(resultTextBox.Text);
+        }
 
-            if (isNewInput)
+        private void Button_Click_Equals(object sender, RoutedEventArgs e)
+        {
+            second = double.Parse(resultTextBox.Text);
+            double result = 0;
+
+            if (op == '+')
             {
-                inputTextBox.Text = digit;
-                isNewInput = false;
+                result = first + second;
             }
-            else
+            else if (op == '-')
             {
-                inputTextBox.Text += digit;
+                result = first - second;
             }
-
-            currentInput = inputTextBox.Text;
-        }
-
-        private void comma_Click(object sender, RoutedEventArgs e)
-        {
-            if (!currentInput.Contains(","))
+            else if (op == '*')
             {
-                inputTextBox.Text += ",";
-                currentInput = inputTextBox.Text;
+                result = first * second;
             }
-        }
-
-        private void Operator_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = (Button)sender;
-            string newOperator = button.Content.ToString();
-
-            if (!string.IsNullOrEmpty(currentOperator))
+            else if (op == '/')
             {
-                Calculate();
-            }
-
-            currentOperator = newOperator;
-            currentNumber = double.Parse(currentInput);
-            isNewInput = true;
-        }
-
-        private void Equals_Click(object sender, RoutedEventArgs e)
-        {
-            Calculate();
-            currentOperator = string.Empty;
-        }
-
-        private void Clear_Click(object sender, RoutedEventArgs e)
-        {
-            currentInput = string.Empty;
-            currentNumber = 0;
-            currentOperator = string.Empty;
-            inputTextBox.Text = string.Empty;
-            isNewInput = true;
-        }
-
-        private void Calculate()
-        {
-            if (!string.IsNullOrEmpty(currentOperator))
-            {
-                double newNumber = double.Parse(currentInput);
-                switch (currentOperator)
+                if (second == 0)
                 {
-                    case "+":
-                        currentNumber += newNumber;
-                        break;
-                    case "-":
-                        currentNumber -= newNumber;
-                        break;
-                    case "*":
-                        currentNumber *= newNumber;
-                        break;
-                    case "/":
-                        if (newNumber != 0)
+                    MessageBox.Show("Nie dzielimy przez 0!");
+                    return;
+                }
+                result = first / second;
+            }
+            resultTextBox.Text = result.ToString();
+        }
+
+        private void Button_Click_Clear(object sender, RoutedEventArgs e)
+        {
+            resultTextBox.Clear();
+        }
+
+        private void Button_Click_Add(object sender, RoutedEventArgs e)
+        {
+            first = double.Parse(resultTextBox.Text);
+            op = '+';
+            resultTextBox.Clear();
+        }
+
+        private void Button_Click_Substract(object sender, RoutedEventArgs e)
+        {
+            first = double.Parse(resultTextBox.Text);
+            op = '-';
+            resultTextBox.Clear();
+        }
+
+        private void Button_Click_Multiply(object sender, RoutedEventArgs e)
+        {
+            first = double.Parse(resultTextBox.Text);
+            op = '*';
+            resultTextBox.Clear();
+        }
+
+        private void Button_Click_Divide(object sender, RoutedEventArgs e)
+        {
+            first = double.Parse(resultTextBox.Text);
+            op = '/';
+            resultTextBox.Clear();
+        }
+
+        private void Button_Click_Comma(object sender, RoutedEventArgs e)
+        {
+            if (!resultTextBox.Text.Contains(","))
+            {
+                resultTextBox.Text += ",";
+            }
+        }
+
+        private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            double result = 0;
+            switch (e.Key)
+            {
+                case Key.D0:
+                case Key.NumPad0:
+                    resultTextBox.Text += "0";
+                    break;
+
+                case Key.D1:
+                case Key.NumPad1:
+                    resultTextBox.Text += "1";
+                    break;
+
+                case Key.D2:
+                case Key.NumPad2:
+                    resultTextBox.Text += "2";
+                    break;
+
+                case Key.D3:
+                case Key.NumPad3:
+                    resultTextBox.Text += "3";
+                    break;
+
+                case Key.D4:
+                case Key.NumPad4:
+                    resultTextBox.Text += "4";
+                    break;
+
+                case Key.D5:
+                case Key.NumPad5:
+                    resultTextBox.Text += "5";
+                    break;
+
+                case Key.D6:
+                case Key.NumPad6:
+                    resultTextBox.Text += "6";
+                    break;
+
+                case Key.D7:
+                case Key.NumPad7:
+                    resultTextBox.Text += "7";
+                    break;
+
+                case Key.D8:
+                case Key.NumPad8:
+                    resultTextBox.Text += "8";
+                    break;
+
+                case Key.D9:
+                case Key.NumPad9:
+                    resultTextBox.Text += "9";
+                    break;
+
+                case Key.Add:
+                case Key.A:
+                    first = double.Parse(resultTextBox.Text);
+                    op = '+';
+                    resultTextBox.Clear();
+                    break;
+
+                case Key.Subtract:
+                case Key.S:
+                    first = double.Parse(resultTextBox.Text);
+                    op = '-';
+                    resultTextBox.Clear();
+                    break;
+
+                case Key.Multiply:
+                case Key.M:
+                    first = double.Parse(resultTextBox.Text);
+                    op = '*';
+                    resultTextBox.Clear();
+                    break;
+
+                case Key.Divide:
+                case Key.D:
+                    first = double.Parse(resultTextBox.Text);
+                    op = '/';
+                    resultTextBox.Clear();
+                    break;
+
+                case Key.Enter:
+                    // Button_Click_Equals(null, null);
+                    second = double.Parse(resultTextBox.Text);
+                    //int result = 0;
+
+                    if (op == '+')
+                    {
+                        result = first + second;
+                    }
+                    else if (op == '-')
+                    {
+                        result = first - second;
+                    }
+                    else if (op == '*')
+                    {
+                        result = first * second;
+                    }
+                    else if (op == '/')
+                    {
+                        if (second == 0)
                         {
-                            currentNumber /= newNumber;
-                        }
-                        else
-                        {
-                            inputTextBox.Text = "Błąd";
-                            currentNumber = 0;
-                            currentOperator = string.Empty;
-                            isNewInput = true;
+                            MessageBox.Show("Nie dzielimy przez 0!");
                             return;
                         }
-                        break;
-                }
+                        result = first / second;
+                    }
+                    resultTextBox.Text = result.ToString();
+                    break;
 
-                inputTextBox.Text = currentNumber.ToString();
-                isNewInput = true;
+                case Key.Back:
+                    if (resultTextBox.Text.Length > 0)
+                    {
+                        resultTextBox.Text = resultTextBox.Text.Substring(0, resultTextBox.Text.Length - 1);
+                    }
+                    break;
+            }
+        }
+
+        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+
             }
         }
     }

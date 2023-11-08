@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:zad_2_Szymon_Olszok"
         mc:Ignorable="d"
-        Title="Kółko i krzyżyk" Height="600" Width="600">
+        Title="Kółko i krzyżyk" Height="800" Width="800">
     <Grid Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
