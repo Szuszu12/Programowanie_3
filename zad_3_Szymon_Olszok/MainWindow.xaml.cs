@@ -28,11 +28,9 @@ namespace zad_3_Szymon_Olszok
 
         private void CreateGrid()
         {
-            // Tworzenie siatek 10x10 dla górnego i dolnego Gridda
             Grid topGridP1 = new Grid();
             Grid bottomGridP1 = new Grid();
 
-            // Usuwanie marginesów przycisków
             Thickness buttonMargin = new Thickness(0);
 
             for (int i = 0; i < 11; i++)
@@ -44,19 +42,18 @@ namespace zad_3_Szymon_Olszok
                 bottomGridP1.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            // Dodawanie przycisków do górnego i dolnego Gridda oraz oznaczeń liter
             for (int row = 0; row < 10; row++)
             {
                 for (int col = 0; col < 10; col++)
                 {
-                    if (row == 0) // Pierwszy wiersz - oznaczenia liter
+                    if (row == 0)
                     {
                         TextBlock letterBlockTop = new TextBlock
                         {
                             Text = ((char)('A' + col)).ToString(),
                             HorizontalAlignment = HorizontalAlignment.Center,
                             VerticalAlignment = VerticalAlignment.Center,
-                            Margin = buttonMargin // Usunięcie marginesów
+                            Margin = buttonMargin
                         };
 
                         TextBlock letterBlockBottom = new TextBlock
@@ -64,26 +61,26 @@ namespace zad_3_Szymon_Olszok
                             Text = ((char)('A' + col)).ToString(),
                             HorizontalAlignment = HorizontalAlignment.Center,
                             VerticalAlignment = VerticalAlignment.Center,
-                            Margin = buttonMargin // Usunięcie marginesów
+                            Margin = buttonMargin
                         };
 
                         Grid.SetRow(letterBlockTop, row);
-                        Grid.SetColumn(letterBlockTop, col + 1); // +1, aby uniknąć zakrycia liczby
+                        Grid.SetColumn(letterBlockTop, col + 1);
                         topGridP1.Children.Add(letterBlockTop);
 
                         Grid.SetRow(letterBlockBottom, row);
-                        Grid.SetColumn(letterBlockBottom, col + 1); // +1, aby uniknąć zakrycia liczby
+                        Grid.SetColumn(letterBlockBottom, col + 1);
                         bottomGridP1.Children.Add(letterBlockBottom);
                     }
 
-                    if (col == 0) // Pierwsza kolumna - liczby
+                    if (col == 0)
                     {
                         TextBlock numberBlockTop = new TextBlock
                         {
                             Text = (row + 1).ToString(),
                             HorizontalAlignment = HorizontalAlignment.Center,
                             VerticalAlignment = VerticalAlignment.Center,
-                            Margin = buttonMargin // Usunięcie marginesów
+                            Margin = buttonMargin
                         };
 
                         TextBlock numberBlockBottom = new TextBlock
@@ -91,14 +88,14 @@ namespace zad_3_Szymon_Olszok
                             Text = (row + 1).ToString(),
                             HorizontalAlignment = HorizontalAlignment.Center,
                             VerticalAlignment = VerticalAlignment.Center,
-                            Margin = buttonMargin // Usunięcie marginesów
+                            Margin = buttonMargin
                         };
 
-                        Grid.SetRow(numberBlockTop, row + 1); // +1, aby uniknąć zakrycia litery
+                        Grid.SetRow(numberBlockTop, row + 1);
                         Grid.SetColumn(numberBlockTop, col);
                         topGridP1.Children.Add(numberBlockTop);
 
-                        Grid.SetRow(numberBlockBottom, row + 1); // +1, aby uniknąć zakrycia litery
+                        Grid.SetRow(numberBlockBottom, row + 1);
                         Grid.SetColumn(numberBlockBottom, col);
                         bottomGridP1.Children.Add(numberBlockBottom);
                     }
@@ -107,50 +104,45 @@ namespace zad_3_Szymon_Olszok
                     {
                         Name = "ButtonTop_" + row + "_" + col,
                         Content = "",
-                        Width = 40, // Zmniejszenie szerokości przycisku
-                        Height = 40, // Zmniejszenie wysokości przycisku
-                        Margin = buttonMargin // Usunięcie marginesów
+                        Width = 40,
+                        Height = 40,
+                        Margin = buttonMargin
                     };
 
                     Button buttonBottom = new Button
                     {
                         Name = "ButtonBottom_" + row + "_" + col,
                         Content = "",
-                        Width = 40, // Zmniejszenie szerokości przycisku
-                        Height = 40, // Zmniejszenie wysokości przycisku
-                        Margin = buttonMargin // Usunięcie marginesów
+                        Width = 40,
+                        Height = 40,
+                        Margin = buttonMargin
                     };
 
                     buttonTop.Click += ButtonDeploy_Click;
                     buttonBottom.Click += ButtonShoot_Click;
 
-                    Grid.SetRow(buttonTop, row + 1); // +1, aby uniknąć zakrycia litery
-                    Grid.SetColumn(buttonTop, col + 1); // +1, aby uniknąć zakrycia liczby
+                    Grid.SetRow(buttonTop, row + 1);
+                    Grid.SetColumn(buttonTop, col + 1);
                     topGridP1.Children.Add(buttonTop);
 
-                    Grid.SetRow(buttonBottom, row + 1); // +1, aby uniknąć zakrycia litery
-                    Grid.SetColumn(buttonBottom, col + 1); // +1, aby uniknąć zakrycia liczby
+                    Grid.SetRow(buttonBottom, row + 1);
+                    Grid.SetColumn(buttonBottom, col + 1);
                     bottomGridP1.Children.Add(buttonBottom);
                 }
             }
 
-            // Dodawanie Griddów do odpowiednich kontenerów w oknie
             TopGridP1.Children.Add(topGridP1);
             BottomGridP1.Children.Add(bottomGridP1);
         }
 
         private void ButtonDeploy_Click(object sender, RoutedEventArgs e)
         {
-            // Obsługa kliknięcia przycisku
             Button button = (Button)sender;
-            // Tutaj możesz dodać kod obsługi kliknięcia przycisku gry w statki.
         }
 
         private void ButtonShoot_Click(object sender, RoutedEventArgs e)
         {
-            // Obsługa kliknięcia przycisku
             Button button = (Button)sender;
-            // Tutaj możesz dodać kod obsługi kliknięcia przycisku gry w statki.
         }
     }
 }
