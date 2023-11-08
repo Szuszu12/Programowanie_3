@@ -103,7 +103,7 @@ namespace zad_3_Szymon_Olszok
                     {
                         Name = "ButtonTop_" + row + "_" + col,
                         Content = "",
-                        Width = 40, 
+                        Width = 40,
                         Height = 40,
                         Margin = buttonMargin
                     };
