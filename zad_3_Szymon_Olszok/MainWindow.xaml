@@ -7,19 +7,9 @@ schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:zad_3_Szymon_Olszok"
         mc:Ignorable="d"
-        Title="Gracz 1" Height="1000" Width="640">
+        Title="Rozstaw" Height="700" Width="700">
     <Grid>
-        <Grid Name="TopGridP1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="auto" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        </Grid>
-        <Grid Name="BottomGridP1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="auto" >
+        <Grid Name="MainGrid" HorizontalAlignment="center" VerticalAlignment="center" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition />

@@ -5,19 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:zad_3_Szymon_Olszok"
         mc:Ignorable="d"
-        Title="Gracz 2" Height="1000" Width="640">
+        Title="Strzały" Height="700" Width="700">
     <Grid>
-        <Grid Name="TopGridP2" VerticalAlignment="Top" HorizontalAlignment="Center" Width="auto" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-        </Grid>
-        <Grid Name="BottomGridP2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="auto" >
+        <Grid Name="MainGrid2" HorizontalAlignment="center" VerticalAlignment="center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition />
