@@ -15,9 +15,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="deployButton" Grid.Row="0" />
-        <UniformGrid x:Name="upperGrid" Grid.Row="1" Columns="10" />
-        <Button x:Name="shootButton" Grid.Row="2" />
-        <UniformGrid x:Name="lowerGrid" Grid.Row="3" Columns="10" />
+        <Button Content="Rozmieść statki" Grid.Row="0" />
+        <UniformGrid Name="upperGrid" Grid.Row="1" Columns="10" />
+        <Button Content="Oddaj strzał" Grid.Row="2" />
+        <UniformGrid Name="lowerGrid" Grid.Row="3" Columns="10" />
     </Grid>
 </Window>
