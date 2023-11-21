@@ -13,12 +13,5 @@ namespace zad_3_Szymon_Olszok
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-
-            SecondWindow secondWindow = new SecondWindow();
-            secondWindow.Show();
-        }
     }
 }

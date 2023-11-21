@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zad_1_Szymon_Olszok", "zad_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zad_2_Szymon_Olszok", "zad_2_Szymon_Olszok\zad_2_Szymon_Olszok.csproj", "{F802AC9D-5D78-45C1-BDD8-59CCEA680D01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zad_3_Szymon_Olszok", "zad_3_Szymon_Olszok\zad_3_Szymon_Olszok.csproj", "{3ACA99A2-7EE7-4F2F-94C9-0E240A76AF8F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zad_3_Szymon_Olszok", "zad_3_Szymon_Olszok\zad_3_Szymon_Olszok.csproj", "{B98FCB87-2C32-47F6-9302-D6FDEE19F240}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{F802AC9D-5D78-45C1-BDD8-59CCEA680D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F802AC9D-5D78-45C1-BDD8-59CCEA680D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F802AC9D-5D78-45C1-BDD8-59CCEA680D01}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3ACA99A2-7EE7-4F2F-94C9-0E240A76AF8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3ACA99A2-7EE7-4F2F-94C9-0E240A76AF8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3ACA99A2-7EE7-4F2F-94C9-0E240A76AF8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3ACA99A2-7EE7-4F2F-94C9-0E240A76AF8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B98FCB87-2C32-47F6-9302-D6FDEE19F240}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B98FCB87-2C32-47F6-9302-D6FDEE19F240}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B98FCB87-2C32-47F6-9302-D6FDEE19F240}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B98FCB87-2C32-47F6-9302-D6FDEE19F240}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

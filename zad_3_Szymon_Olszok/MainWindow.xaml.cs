@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -15,84 +16,154 @@ using System.Windows.Shapes;
 
 namespace zad_3_Szymon_Olszok
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
-            CreateGrid();
+            int[] tab = new int[100];
+            int[] tab2 = new int[100];
+            Game gra = new Game(tab, tab2);
+            plnPersonForm.DataContext = gra;
+            InitializedeployButton(deployButton);
+            InitializeUpperGrid(upperGrid, 10, Button_Click);
+            InitializeShootButton(shootButton);
+            InitializeLowerGrid(lowerGrid, 10, Button_Click_shot);
+            Player2 okno = new Player2();
+            okno.DataContext = gra;
+            okno.Show();
         }
 
-        private void CreateGrid()
+        private void InitializeUpperGrid(UniformGrid grid, int gridSize, RoutedEventHandler clickHandler)
         {
-            Grid grid = new Grid();
-
-            Thickness buttonMargin = new Thickness(0);
-
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < gridSize; i++)
             {
-                grid.RowDefinitions.Add(new RowDefinition());
-                grid.ColumnDefinitions.Add(new ColumnDefinition());
-            }
-
-           
-            for (int row = 0; row < 10; row++)
-            {
-                for (int col = 0; col < 10; col++)
+                for (int j = 0; j < gridSize; j++)
                 {
-                    if (row == 0) 
+                    Button btn = new Button
                     {
-                        TextBlock letterBlock = new TextBlock
-                        {
-                            Text = ((char)('A' + col)).ToString(),
-                            HorizontalAlignment = HorizontalAlignment.Center,
-                            VerticalAlignment = VerticalAlignment.Center,
-                            Margin = buttonMargin // Usunięcie marginesów
-                        };
-                        Grid.SetRow(letterBlock, row);
-                        Grid.SetColumn(letterBlock, col + 1); 
-                        grid.Children.Add(letterBlock);
-                    }
-
-                    if (col == 0)
-                    {
-                        TextBlock numberBlock = new TextBlock
-                        {
-                            Text = (row + 1).ToString(),
-                            HorizontalAlignment = HorizontalAlignment.Center,
-                            VerticalAlignment = VerticalAlignment.Center,
-                            Margin = buttonMargin
-                        };
-                        Grid.SetRow(numberBlock, row + 1); 
-                        Grid.SetColumn(numberBlock, col);
-                        grid.Children.Add(numberBlock);
-                    }
-
-                    Button button = new Button
-                    {
-                        Name = "Button_" + row + "_" + col,
-                        Content = "",
-                        Width = 64,
-                        Height = 64,
-                        Margin = buttonMargin
+                        Content = $"{i}.{j}",
+                        Tag = i * gridSize + j,
                     };
 
-                    button.Click += Button_Click;
-                    Grid.SetRow(button, row + 1);
-                    Grid.SetColumn(button, col + 1);
-                    grid.Children.Add(button);
+                    Binding binding = new Binding($"PersonIdOne[{btn.Tag}]");
+                    binding.Converter = new YesNoToBooleanConverter();
+                    btn.SetBinding(BackgroundProperty, binding);
+
+                    btn.Click += Button_Click;
+                    grid.Children.Add(btn);
                 }
             }
+        }
 
-            MainGrid.Children.Add(grid);
+        private void InitializeLowerGrid(UniformGrid grid, int gridSize, RoutedEventHandler clickHandler)
+        {
+            for (int i = 0; i < gridSize; i++)
+            {
+                for (int j = 0; j < gridSize; j++)
+                {
+                    Button btn = new Button
+                    {
+                        Content = $"{i}.{j}",
+                        Tag = i * gridSize + j,
+                    };
+
+                    Binding binding = new Binding($"PersonIdTwo[{btn.Tag}]");
+                    binding.Converter = new YesNoToBooleanConverter2();
+                    btn.SetBinding(BackgroundProperty, binding);
+
+                    btn.Click += Button_Click_shot;
+                    grid.Children.Add(btn);
+                }
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
+            Button btn = (Button)sender;
+            if (((Game)plnPersonForm.DataContext).PersonIdOne[Convert.ToInt32(btn.Tag.ToString())] == 0)
+                ((Game)plnPersonForm.DataContext).PersonIdOne[Convert.ToInt32(btn.Tag.ToString())]++;
+            else if (((Game)plnPersonForm.DataContext).PersonIdOne[Convert.ToInt32(btn.Tag.ToString())] == 1)
+                ((Game)plnPersonForm.DataContext).PersonIdOne[Convert.ToInt32(btn.Tag.ToString())]--;
+        }
+
+        private void Button_Click_shot(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (((Game)plnPersonForm.DataContext).PersonIdTwo[Convert.ToInt32(btn.Tag.ToString())] == 0 || ((Game)plnPersonForm.DataContext).PersonIdTwo[Convert.ToInt32(btn.Tag.ToString())] == 1)
+                ((Game)plnPersonForm.DataContext).PersonIdTwo[Convert.ToInt32(btn.Tag.ToString())] += 2;
+        }
+
+        private void InitializedeployButton(Button button)
+        {
+            button.Content = "Rozmieść statki";
+            button.Click += deployButton_Click;
+        }
+
+        private void deployButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void InitializeShootButton(Button button)
+        {
+            button.Content = "Oddaj strzał";
+            button.Click += ShootButton_Click;
+        }
+
+        private void ShootButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
+
+    public class YesNoToBooleanConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            switch (value)
+            {
+                case 3:
+                    MessageBox.Show("Trafiony!");
+                    return new SolidColorBrush(Colors.Red);
+                case 2:
+                    return new SolidColorBrush(Colors.Yellow);
+                case 1:
+                    return new SolidColorBrush(Colors.Black);
+                case 0:
+                    return new SolidColorBrush(Colors.Transparent);
+            }
+            return false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return 0;
+        }
+    }
+
+    public class YesNoToBooleanConverter2 : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            switch (value)
+            {
+                case 3:
+                    return new SolidColorBrush(Colors.Red);
+                case 2:
+                    return new SolidColorBrush(Colors.Yellow);
+                case 1:
+                    return new SolidColorBrush(Colors.Transparent);
+                case 0:
+                    return new SolidColorBrush(Colors.Transparent);
+            }
+            return false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return 0;
         }
     }
 }
