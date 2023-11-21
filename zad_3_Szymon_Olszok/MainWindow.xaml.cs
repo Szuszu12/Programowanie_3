@@ -25,8 +25,8 @@ namespace zad_3_Szymon_Olszok
             int[] tab2 = new int[100];
             Game gra = new Game(tab, tab2);
             plnPersonForm.DataContext = gra;
-            InitializeUpperGrid(upperGrid, 10, Button_Click);
-            InitializeLowerGrid(lowerGrid, 10, Button_Click_shot);
+            InitializeUpperGrid(upperGrid, 10, Button_Deploy_Click);
+            InitializeLowerGrid(lowerGrid, 10, Button_Shot_Click);
             Player2 okno = new Player2();
             okno.DataContext = gra;
             okno.Show();
@@ -47,7 +47,7 @@ namespace zad_3_Szymon_Olszok
                     Binding binding = new Binding($"PersonIdOne[{btn.Tag}]");
                     binding.Converter = new YesNoToBooleanConverter();
                     btn.SetBinding(BackgroundProperty, binding);
-                    btn.Click += Button_Click;
+                    btn.Click += Button_Deploy_Click;
                     grid.Children.Add(btn);
                 }
             }
@@ -68,13 +68,13 @@ namespace zad_3_Szymon_Olszok
                     Binding binding = new Binding($"PersonIdTwo[{btn.Tag}]");
                     binding.Converter = new YesNoToBooleanConverter2();
                     btn.SetBinding(BackgroundProperty, binding);
-                    btn.Click += Button_Click_shot;
+                    btn.Click += Button_Shot_Click;
                     grid.Children.Add(btn);
                 }
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Deploy_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
             if (((Game)plnPersonForm.DataContext).PersonIdOne[Convert.ToInt32(btn.Tag.ToString())] == 0)
@@ -83,7 +83,7 @@ namespace zad_3_Szymon_Olszok
                 ((Game)plnPersonForm.DataContext).PersonIdOne[Convert.ToInt32(btn.Tag.ToString())]--;
         }
 
-        private void Button_Click_shot(object sender, RoutedEventArgs e)
+        private void Button_Shot_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
             if (((Game)plnPersonForm.DataContext).PersonIdTwo[Convert.ToInt32(btn.Tag.ToString())] == 0 || ((Game)plnPersonForm.DataContext).PersonIdTwo[Convert.ToInt32(btn.Tag.ToString())] == 1)
