@@ -5,46 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:zad_1_Szymon_Olszok"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Lista Studentów" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <DataGrid x:Name="dataGridStudent" Margin="-4,0,4,0">
 
-        <StackPanel>
-            <TextBlock Text="Dodaj nowego studenta"/>
-        </StackPanel>
+        </DataGrid>
 
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Imię:" Width="100" VerticalAlignment="Center"/>
-            <TextBox Name="ImieTextBox" Width="200" Margin="5"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Nazwisko:" Width="100" VerticalAlignment="Center"/>
-            <TextBox Name="NazwiskoTextBox" Width="200" Margin="5"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Data urodzenia:" Width="100" VerticalAlignment="Center"/>
-            <DatePicker Name="DataUrodzeniaDatePicker" Width="200" Margin="5"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Semestr:" Width="100" VerticalAlignment="Center"/>
-            <ComboBox Name="SemestrComboBox" Width="200" Margin="5">
-                <ComboBoxItem Content="1"/>
-                <ComboBoxItem Content="2"/>
-                <ComboBoxItem Content="3"/>
-                <ComboBoxItem Content="4"/>
-                <ComboBoxItem Content="5"/>
-                <ComboBoxItem Content="6"/>
-                <ComboBoxItem Content="7"/>
-                <ComboBoxItem Content="8"/>
-            </ComboBox>
-        </StackPanel>
-
-        <StackPanel>
-            <Button Content="Dodaj studenta" Width="100" Height="30" />
-        </StackPanel>
-
-    </StackPanel>
+        <Button Click="Button_Click_Add" Grid.Row="1" Content="Dodaj"/>
+        <Button Grid.Row="2" Content="Zapisz do pliku" Click="Button_Click_Save"/>
+        <Button Grid.Row="3" Content="Wczytaj z pliku" Click="Button_Click_Read"/>
+    </Grid>
 </Window>
